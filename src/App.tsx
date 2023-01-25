@@ -1,18 +1,14 @@
-import React, { useEffect } from 'react';
-import logo from './logo.svg';
-import './App.css';
-import { useCart } from 'react-use-cart';
+import { useEffect } from "react";
+import "./App.css";
+import useProducts from "./hooks/useProducts";
 
 function App() {
-  const {addItem, items}=useCart()
-
-
-  console.log(items);
-  return (
-    <div className="App">
-      
-    </div>
-  );
+  const { data, getData } = useProducts();
+  console.log(data);
+  useEffect(() => {
+    getData({ limit: 20 });
+  }, [getData]);
+  return <div className="App"></div>;
 }
 
 export default App;
